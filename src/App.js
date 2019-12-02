@@ -10,6 +10,7 @@ import SideDrawerToggle from "./Components/Navigation/SideDrawer/DrawerToggleBut
 import Home from "./Pages/Home/Home";
 import About from "./Pages/About/About";
 import Catalogue from "./Pages/Catalogue/Catalogue";
+import ItemDetail from "./Pages/CatalogueItem/ItemDetail";
 
 class App extends Component {
   constructor(props) {
@@ -71,8 +72,8 @@ class App extends Component {
             <h1>App</h1>
             <Switch>
               <Route
-                path={this.state.data.navigation[0].url}
                 exact
+                path={this.state.data.navigation[0].url}
                 component={Home}
               />
               <Route
@@ -80,8 +81,13 @@ class App extends Component {
                 component={About}
               />
               <Route
+                exact
                 path={this.state.data.navigation[2].url}
                 component={Catalogue}
+              />
+              <Route
+                path={this.state.data.navigation[2].url + "/:name"}
+                component={ItemDetail}
               />
             </Switch>
           </main>
@@ -92,3 +98,22 @@ class App extends Component {
 }
 
 export default App;
+
+function slugify(string) {
+  const a =
+    "àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;";
+  const b =
+    "aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------";
+  const p = new RegExp(a.split("").join("|"), "g");
+
+  return string
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+    .replace(/&/g, "-and-") // Replace & with 'and'
+    .replace(/[^\w\-]+/g, "") // Remove all non-word characters
+    .replace(/\-\-+/g, "-") // Replace multiple - with single -
+    .replace(/^-+/, "") // Trim - from start of text
+    .replace(/-+$/, ""); // Trim - from end of text
+}
