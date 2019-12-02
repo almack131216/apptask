@@ -1,0 +1,52 @@
+/* Colors.css */
+
+.bg-primary {
+  background-color: $color_primary;
+
+  h2,
+  h3,
+  h4,
+  p {
+    color: white;
+  }
+}
+
+.bg-secondary {
+  background-color: $color_secondary;
+  color: black;
+}
+
+.bg-third {
+  background-color: $color_three;
+
+  p,
+  ul li {
+    color: black;
+  }
+}
+
+.bg-fourth {
+  background-color: $color_four;
+
+  h2,
+  h3,
+  h4,
+  p,
+  a {
+    color: white;
+  }
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-primary,
+.bg-secondary a,
+.bg-third a {
+  color: white;
+}
+
+.text-primary {
+  color: $color_primary;
+}

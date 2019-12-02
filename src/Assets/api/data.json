@@ -1,0 +1,27 @@
+{
+  "date": "191203",
+  "brandName": "U+ Demo Task",
+  "navigation": [
+    {
+      "id": "home",
+      "title": "Home",
+      "url": "/",
+      "navTop": true,
+      "navSide": true
+    },
+    {
+      "id": "about",
+      "title": "About",
+      "url": "/about",
+      "navTop": true,
+      "navSide": true
+    },
+    {
+      "id": "catalogue",
+      "title": "Catalogue",
+      "url": "/catalogue",
+      "navTop": true,
+      "navSide": true
+    }
+  ]
+}
