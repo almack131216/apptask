@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const sideDrawer = props => {
   let drawerClasses = "side-drawer";
@@ -9,13 +10,13 @@ const sideDrawer = props => {
   const navLinks = props.navigation.map((link, index) => {
     return link.navSide ? (
       <li key={index}>
-        <a
+        <Link
           onClick={props.clicked}
-          href={link.url}
+          to={link.url}
           title={"Link to " + link.title}
         >
           {link.title}
-        </a>
+        </Link>
       </li>
     ) : null;
   });

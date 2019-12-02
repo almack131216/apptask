@@ -1,5 +1,6 @@
 import React from "react";
 import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
+import { Link } from "react-router-dom";
 
 const toolbar = props => {
   let classes = [];
@@ -18,9 +19,9 @@ const toolbar = props => {
     ? props.navigation.map((link, index) => {
         return link.navTop ? (
           <li key={index}>
-            <a href={link.url} title="Link to {link.title}">
+            <Link to={link.url} title="Link to {link.title}">
               {link.title}
-            </a>
+            </Link>
           </li>
         ) : null;
       })
