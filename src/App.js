@@ -69,7 +69,6 @@ class App extends Component {
           />
           {backdrop}
           <main>
-            <h1>App</h1>
             <Switch>
               <Route
                 exact
@@ -80,15 +79,8 @@ class App extends Component {
                 path={this.state.data.navigation[1].url}
                 component={About}
               />
-              <Route
-                exact
-                path={this.state.data.navigation[2].url}
-                component={Catalogue}
-              />
-              <Route
-                path={this.state.data.navigation[2].url + "/:name"}
-                component={ItemDetail}
-              />
+              <Route exact path="/catalogue" component={Catalogue} />
+              <Route path="/catalogue/:name" component={ItemDetail} />
             </Switch>
           </main>
         </div>
@@ -98,22 +90,3 @@ class App extends Component {
 }
 
 export default App;
-
-function slugify(string) {
-  const a =
-    "àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;";
-  const b =
-    "aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------";
-  const p = new RegExp(a.split("").join("|"), "g");
-
-  return string
-    .toString()
-    .toLowerCase()
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
-    .replace(/&/g, "-and-") // Replace & with 'and'
-    .replace(/[^\w\-]+/g, "") // Remove all non-word characters
-    .replace(/\-\-+/g, "-") // Replace multiple - with single -
-    .replace(/^-+/, "") // Trim - from start of text
-    .replace(/-+$/, ""); // Trim - from end of text
-}

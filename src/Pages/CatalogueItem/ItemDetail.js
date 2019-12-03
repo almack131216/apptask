@@ -7,24 +7,25 @@ function ItemDetail({ match }) {
     console.log("[ItemDetail.js] useEffect -> match...", match);
   }, []);
 
-  const [item, setItem] = useState({
-    sprites: {}
-  });
+  const [item, setItem] = useState([]);
 
   const fetchItem = async () => {
-    const data = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${match.params.name}`
-    );
+    var url = `https://dog.ceo/api/breed/${match.params.name}/images`;
+    const data = await fetch(url);
 
     const item = await data.json();
-    console.log("[ItemDetail.js] fetchItem...", item);
-    setItem(item);
+    console.log("[ItemDetail.js] fetchItem...", item.message);
+    setItem(item.message);
   };
 
   return (
     <div>
-      <img src={item.sprites.front_default} />
-      <h4>{item.name}</h4>
+      <h4>{match.params.name}</h4>
+      {item.slice(0, 4).map((imgSrc, index) => (
+        <li key={index}>
+          <img src={imgSrc} width="100px" />
+        </li>
+      ))}
     </div>
   );
 }
