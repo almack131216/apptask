@@ -1,3 +1,7 @@
+/* SideDrawer.scss */
+
+$SideDrawerWidth: 260px;
+
 .side-drawer {
   height: 100%;
   background: white;
@@ -5,10 +9,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
+  width: $SideDrawerWidth;
   max-width: 400px;
   z-index: 101;
-  transform: translateX(-210px);
+  transform: translateX(calc(0px - (#{$SideDrawerWidth} + 10px)));
   transition: transform 0.3s ease-out;
 
   &.open {
@@ -40,9 +44,3 @@
     }
   }
 }
-
-// @media (min-width: $bp-sm) {
-//   .side-drawer {
-//     display: none;
-//   }
-// }

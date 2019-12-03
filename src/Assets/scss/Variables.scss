@@ -3,21 +3,14 @@
 $max-width: 900px;
 
 /* color */
-$color_primary: #c0392b;
-$color_secondary: #ffaf00;
-$color_three: #0091cf;
-$color_four: #01395a;
-
-$color_font-h1: black;
-$color_font-h2: black;
-$color_font-h3: black;
-$color_font-h4: black;
-$color_font-default: #333;
-$color_font-hyperlink: black;
-$color_font-hyperlink-hover: $color_secondary;
-$color_font-hyperlink-hover-bg: black;
-
-$color_border: #ddd;
+$color-font-h1: black;
+$color-font-h2: black;
+$color-font-h3: black;
+$color-font-default: #333;
+$color-font-hyperlink: #00f;
+$color-font-hyperlink-hover: #ffaf00;
+$color-font-hyperlink-active: purple;
+$color-border: #ddd;
 
 /* offset: margins & paddings */
 $offset-1: 10px;

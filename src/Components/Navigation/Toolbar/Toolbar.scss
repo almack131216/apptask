@@ -33,9 +33,10 @@
   margin-left: $offset-g1;
 
   a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-size: 1.4rem;
+    font-weight: bold;
   }
 }
 
@@ -50,16 +51,11 @@
   display: flex;
 
   li {
-    padding: 0 0.5rem;
+    padding: 0 $offset-g1;
 
     a {
-      color: white;
+      font-weight: bold;
       text-decoration: none;
-
-      &:hover,
-      &:active {
-        color: orange;
-      }
     }
   }
 }
@@ -70,9 +66,21 @@
   }
 }
 
+.toolbar:not(.side-drawer-open) {
+  // background: rgba(51, 51, 51, 0.75); //333 @ 75%
+  background: rgba(255, 255, 255, 0.75); //white @ 75%
+  transition: all 0.2s ease-in;
+  // border-bottom: 1px solid #000;
+
+  &:hover {
+    background: white;
+  }
+}
+
 @media (min-width: $bp-sm) {
   .toolbar__navigation {
-    background: #333;
+    max-width: $max-width;
+    margin: 0 auto;
   }
 
   .toolbar__toggle-button {

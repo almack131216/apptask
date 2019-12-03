@@ -2,12 +2,15 @@
 
 /* from index.css */
 body {
-  margin: calc(#{$offset-g2}* 3) 0 0 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  margin: calc(#{$offset-g2}* 3) 0 0 0; //margin-top because of Toolbar
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  max-width: $max-width;
+  padding: 0 $offset-g1;
+  margin: 0 auto;
 }
 
 code {
@@ -15,10 +18,6 @@ code {
     monospace;
 }
 /* (END) from index.css */
-
-.App {
-  text-align: center;
-}
 
 .display-none {
   display: none;
@@ -30,9 +29,4 @@ code {
 
 .display-inline-block {
   display: inline-block;
-}
-
-/* offsets */
-.pad-icon-left {
-  margin-left: $offset-1;
 }

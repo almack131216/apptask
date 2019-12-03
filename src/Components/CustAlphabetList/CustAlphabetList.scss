@@ -6,10 +6,10 @@
   margin: 0 auto;
 
   .alpha-list {
+    box-sizing: border-box;
     position: relative !important;
     width: 100% !important;
-    border: 1px solid #ccc;
-    // max-width: 800px;
+    border: 1px solid $color-border;
     height: calc(100vh - 200px) !important;
     min-height: 300px;
     margin: 0 auto;
@@ -31,14 +31,9 @@
 
       // word link / tag
       .alphabet-list-tag {
+        @extend .aLozengeClass;
         display: inline-block;
-        background: #fff;
-        border: 1px solid $color_font-hyperlink;
         margin: 0 5px 5px 0;
-        padding: 5px;
-        text-decoration: none;
-        line-height: 20px;
-        border-radius: 5px;
       }
     }
 
@@ -54,29 +49,22 @@
 
       // [A]-[Z] buttons
       > div {
-        background: $color_font-hyperlink;
-        color: white !important;
-        font-weight: bold;
-        text-align: center;
-        line-height: 20px !important;
-        font-size: 10px !important;
-        width: 20px;
-        height: 20px;
-        margin: 0px !important;
-        padding: 0px !important;
-        vertical-align: unset !important;
+        @extend .aLozengeClass;
+        @extend .aCustAlphabetListLetterBtn;
       }
     }
   }
 }
 
-@media (max-height: 639px) {
+// if HEIGHT is too small, move [A]-[Z] nav to be horizontal
+@media (max-height: $bp-tablet-1) {
   .alpha-list-wrap {
     .alpha-list {
       > div:first-child {
       }
 
       > div:nth-child(2) {
+        top: 0px !important;
         width: auto !important;
         flex-direction: row;
         justify-content: center;
@@ -87,5 +75,42 @@
         }
       }
     }
+  }
+}
+
+// if WIDTH is too small, hide [A]-[Z] nav
+@media (max-width: $bp-tablet-1) {
+  .alpha-list-wrap {
+    .alpha-list {
+      > div:first-child {
+      }
+
+      > div:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+}
+
+.aCustAlphabetListLetterBtn {
+  background: transparent;
+  border: none;
+  color: $color-font-hyperlink !important;
+  font-weight: bold;
+  text-align: center;
+  line-height: 20px !important;
+  font-size: 10px !important;
+  width: 20px;
+  height: 20px;
+  margin: 0px !important;
+  padding: 0px !important;
+  vertical-align: unset !important;
+
+  &:hover {
+    color: white !important;
+  }
+
+  &:active {
+    color: white !important;
   }
 }

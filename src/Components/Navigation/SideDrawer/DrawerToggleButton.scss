@@ -9,78 +9,68 @@
   height: 100%;
   background: transparent;
   border: none;
-  cursor: pointer;
   padding: $offset-1 $offset-g1;
   box-sizing: border-box;
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .nav-icon {
   width: $offset-g2;
-}
 
-.nav-icon:after,
-.nav-icon:before,
-.nav-icon div {
-  background-color: black;
-  border-radius: 3px;
-  content: "";
-  display: block;
-  height: 4px;
-  margin: 7px 0;
-  transition: all 0.2s ease-in-out;
-}
-
-.toolbar:not(.side-drawer-open) {
-  // background: rgba(51, 51, 51, 0.75); //333 @ 75%
-  background: rgba(255, 255, 255, 0.75); //white @ 75%
-  transition: all 0.2s ease-in;
-
-  &:hover {
-    background: white;
+  &:after,
+  &:before,
+  div {
+    background-color: black;
+    border-radius: 3px;
+    content: "";
+    display: block;
+    height: 4px;
+    margin: 7px 0;
+    transition: all 0.2s ease-in-out;
   }
 }
 
 .toolbar:not(.side-drawer-open) {
-  .toggle-button:hover .nav-icon:before,
-  .toggle-button:hover .nav-icon:after,
-  .toggle-button:hover .nav-icon div {
-    width: $offset-2;
-  }
+  .toggle-button {
+    &:hover {
+      .nav-icon {
+        &:before,
+        &:after {
+          width: $offset-2;
+        }
 
-  .toggle-button:hover .nav-icon:before {
-    transform: translateX(6px) translateY(5px) rotate(45deg);
-  }
+        &:before {
+          transform: translateX(6px) translateY(5px) rotate(45deg);
+        }
 
-  .toggle-button:hover .nav-icon:after {
-    transform: translateX(6px) translateY(-5px) rotate(-45deg);
-  }
+        div {
+          transform: scale(0);
+        }
 
-  .toggle-button:hover .nav-icon div {
-    transform: scale(0);
+        &:after {
+          transform: translateX(6px) translateY(-5px) rotate(-45deg);
+        }
+      }
+    }
   }
 }
 
 .toolbar.side-drawer-open {
-  .nav-icon:after,
-  .nav-icon:before,
-  .nav-icon div {
-    background-color: black;
-  }
+  .toggle-button:hover .nav-icon {
+    &:before {
+      transform: translateY(11px) rotate(135deg);
+    }
 
-  .toggle-button:hover .nav-icon:before {
-    transform: translateY(11px) rotate(135deg);
-  }
+    &:after {
+      transform: translateY(-11px) rotate(-135deg);
+    }
 
-  .toggle-button:hover .nav-icon:after {
-    transform: translateY(-11px) rotate(-135deg);
+    div {
+      transform: scale(0);
+    }
   }
-
-  .toggle-button:hover .nav-icon div {
-    transform: scale(0);
-  }
-}
-
-.toggle-button:focus {
-  outline: none;
 }

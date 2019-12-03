@@ -1,0 +1,31 @@
+/* Extends.scss */
+
+.aClass {
+  color: $color-font-hyperlink;
+  &:hover {
+    color: $color-font-hyperlink-hover;
+  }
+  &:active {
+    color: $color-font-hyperlink-active;
+  }
+}
+.aLozengeClass {
+  color: $color-font-hyperlink;
+  background: white;
+  border: 1px solid $color-border;
+  padding: 5px;
+  text-decoration: none;
+  line-height: 20px;
+  border-radius: 5px;
+
+  &:hover {
+    border-color: $color-font-hyperlink-hover;
+    background: $color-font-hyperlink-hover;
+    color: white;
+  }
+  &:active {
+    border-color: $color-font-hyperlink-active;
+    background: $color-font-hyperlink-active;
+    color: white;
+  }
+}
