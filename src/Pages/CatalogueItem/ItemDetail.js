@@ -20,7 +20,7 @@ function ItemDetail({ match }) {
 
   return (
     <div>
-      <h4>{match.params.name}</h4>
+      <h2>{match.params.name}</h2>
       {item.slice(0, 4).map((imgSrc, index) => (
         <li key={index}>
           <img src={imgSrc} width="100px" />

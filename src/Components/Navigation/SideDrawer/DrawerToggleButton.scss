@@ -13,24 +13,43 @@
   box-sizing: border-box;
   cursor: pointer;
 
+  &:hover {
+    .nav-icon {
+      &:after,
+      &:before,
+      div {
+        background-color: $color-font-hyperlink-hover;
+      }
+    }
+  }
+  &:active {
+    .nav-icon {
+      &:after,
+      &:before,
+      div {
+        background-color: $color-font-hyperlink-active;
+      }
+    }
+  }
+
   &:focus {
     outline: none;
   }
-}
 
-.nav-icon {
-  width: $offset-g2;
+  .nav-icon {
+    width: $offset-g2;
 
-  &:after,
-  &:before,
-  div {
-    background-color: black;
-    border-radius: 3px;
-    content: "";
-    display: block;
-    height: 4px;
-    margin: 7px 0;
-    transition: all 0.2s ease-in-out;
+    &:after,
+    &:before,
+    div {
+      background-color: $color-font-hyperlink;
+      border-radius: 3px;
+      content: "";
+      display: block;
+      height: 4px;
+      margin: 7px 0;
+      transition: all 0.2s ease-in-out;
+    }
   }
 }
 
