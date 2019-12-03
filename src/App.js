@@ -79,8 +79,8 @@ class App extends Component {
                 path={this.state.data.navigation[1].url}
                 component={About}
               />
-              <Route exact path="/catalogue" component={Catalogue} />
-              <Route path="/catalogue/:name" component={ItemDetail} />
+              <Route exact path="/dogs" component={Catalogue} />
+              <Route path="/dogs/:name" component={ItemDetail} />
             </Switch>
           </main>
         </div>

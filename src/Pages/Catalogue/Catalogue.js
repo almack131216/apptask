@@ -18,10 +18,8 @@ function Catalogue() {
 
   return (
     <div>
-      <h2>Catalogue</h2>
-      <div className="alpha-list-wrap">
-        <CustAlphabetList data={items} />
-      </div>
+      <h2>Dogs</h2>
+      <CustAlphabetList data={items} />
     </div>
   );
 }

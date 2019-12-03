@@ -1,6 +1,6 @@
 {
   "date": "191203",
-  "brandName": "U+ Demo Task",
+  "brandName": "U+ DogDemo",
   "navigation": [
     {
       "id": "home",
@@ -17,9 +17,9 @@
       "navSide": true
     },
     {
-      "id": "catalogue",
-      "title": "Catalogue",
-      "url": "/catalogue",
+      "id": "dogs",
+      "title": "Dogs",
+      "url": "/dogs",
       "navTop": true,
       "navSide": true
     }
