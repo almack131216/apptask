@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import slugify from "react-slugify";
+import AlphabetList from "react-alphabet-list";
+import "./Catalogue.css";
+// import { Tag } from "antd";
+// import "antd/dist/antd.css";
+import "./_cust_antd.css";
 
 function Catalogue() {
   useEffect(() => {
@@ -20,13 +25,33 @@ function Catalogue() {
   return (
     <div>
       <h2>Catalogue</h2>
-      <ul>
+      <AlphabetList
+        className="alpha-list"
+        data={items}
+        generateFn={(item, index) => {
+          return (
+            // <Tag color="#ccc" key={item + index}>
+            //   {/* <Icon type="plus" style={{ margin: "0 5px 0 0" }} /> */}
+            //   {item}
+            // </Tag>
+            <Link
+              className="alphabet-list-tag"
+              key={index}
+              to={`/catalogue/${slugify(item)}`}
+            >
+              {item}
+            </Link>
+          );
+        }}
+      />
+
+      {/* <ul>
         {items.map((item, index) => (
           <li key={index}>
             <Link to={`/catalogue/${slugify(item)}`}>{item}</Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }
