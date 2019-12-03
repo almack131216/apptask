@@ -1,33 +1,83 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
+import ReactLoading from "react-loading";
+import axios from "axios";
 
-function ItemDetail({ match }) {
-  useEffect(() => {
-    fetchItem();
-    console.log("[ItemDetail.js] useEffect -> match...", match);
-  }, []);
+class ItemDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.itemName = this.props.match.params.name;
+    this.timeIncrementMs = 50;
+    this.showSpinnerIfReturnGreaterThanMs = 200;
+    this.state = {
+      isLoading: true,
+      msElapsed: 0
+    };
+  }
 
-  const [item, setItem] = useState([]);
+  componentWillUnmount() {
+    clearInterval(this.incrementer);
+  }
 
-  const fetchItem = async () => {
-    var url = `https://dog.ceo/api/breed/${match.params.name}/images`;
-    const data = await fetch(url);
+  componentDidMount() {
+    // let url = "https://api.github.com/users/pkellner/repos";
+    let url = `https://dog.ceo/api/breed/${this.itemName}/images`;
+    console.log("API:" + url);
 
-    const item = await data.json();
-    console.log("[ItemDetail.js] fetchItem...", item.message);
-    setItem(item.message);
-  };
+    this.incrementer = setInterval(
+      () =>
+        this.setState({
+          msElapsed: this.state.msElapsed + this.timeIncrementMs
+        }),
+      this.timeIncrementMs
+    );
+    axios
+      .get(url)
+      .then(result => {
+        this.setState({
+          appData: result.data.message,
+          isLoading: false
+        });
+      })
+      .catch(error => {
+        if (error.response) {
+          console.log(error.responderEnd);
+        }
+      });
+  }
 
-  return (
-    <div>
-      <h2>{match.params.name}</h2>
-      {item.slice(0, 4).map((imgSrc, index) => (
-        <li key={index}>
-          <img src={imgSrc} width="100px" />
-        </li>
-      ))}
-    </div>
-  );
+  render() {
+    if (
+      this.state.isLoading &&
+      this.state.msElapsed > this.showSpinnerIfReturnGreaterThanMs
+    ) {
+      return (
+        <ReactLoading
+          type={"spin"}
+          color={"black"}
+          height={"100px"}
+          width={"100px"}
+        />
+      );
+    } else if (
+      this.state.isLoading &&
+      this.state.msElapsed <= this.showSpinnerIfReturnGreaterThanMs
+    ) {
+      return null;
+    }
+
+    const content = this.state.appData.slice(0, 6).map((imgSrc, index) => (
+      <li key={index}>
+        <img src={imgSrc} width="100px" />
+      </li>
+    ));
+
+    return (
+      <div>
+        <h2>{this.itemName}</h2>
+        <ul>{content}</ul>
+      </div>
+    );
+  }
 }
 
 export default ItemDetail;
