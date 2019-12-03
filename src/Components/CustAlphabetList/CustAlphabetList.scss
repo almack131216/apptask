@@ -1,0 +1,91 @@
+/* _cust_AlphabetList.scss */
+
+.alpha-list-wrap {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+
+  .alpha-list {
+    position: relative !important;
+    width: 100% !important;
+    border: 1px solid #ccc;
+    // max-width: 800px;
+    height: calc(100vh - 200px) !important;
+    min-height: 300px;
+    margin: 0 auto;
+
+    // A-Z results box
+    > div:first-child {
+      width: 100% !important;
+      margin: 0 auto;
+      background: #f9f9f9;
+      padding: $offset-g1;
+      padding-right: 50px !important; // leave gap for the [A]-[Z] buttons
+      box-sizing: border-box;
+
+      // A(#)-Z(#) titles
+      > div > div:first-child {
+        color: black !important;
+        font-weight: bold;
+      }
+
+      // word link / tag
+      .alphabet-list-tag {
+        display: inline-block;
+        background: #fff;
+        border: 1px solid $color_font-hyperlink;
+        margin: 0 5px 5px 0;
+        padding: 5px;
+        text-decoration: none;
+        line-height: 20px;
+        border-radius: 5px;
+      }
+    }
+
+    // [A]-[Z] buttons bar
+    > div:nth-child(2) {
+      top: $offset-g1 !important;
+      right: $offset-g2 !important; //avoid the scrollbar
+      width: auto;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+
+      // [A]-[Z] buttons
+      > div {
+        background: $color_font-hyperlink;
+        color: white !important;
+        font-weight: bold;
+        text-align: center;
+        line-height: 20px !important;
+        font-size: 10px !important;
+        width: 20px;
+        height: 20px;
+        margin: 0px !important;
+        padding: 0px !important;
+        vertical-align: unset !important;
+      }
+    }
+  }
+}
+
+@media (max-height: 639px) {
+  .alpha-list-wrap {
+    .alpha-list {
+      > div:first-child {
+      }
+
+      > div:nth-child(2) {
+        width: auto !important;
+        flex-direction: row;
+        justify-content: center;
+
+        > div {
+          display: inline-block;
+          // margin-right: 2px !important;
+        }
+      }
+    }
+  }
+}
