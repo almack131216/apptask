@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import CustAlphabetList from "../../Components/CustAlphabetList/CustAlphabetList";
-import { setDocumentTitle } from "../../Assets/Helpers";
+import { setDocumentTitle, apiGetItems } from "../../Assets/Helpers";
 
-function Catalogue() {
-  setDocumentTitle("Dogs");
+function Catalogue(props) {
+  const apiPath = apiGetItems();
+  setDocumentTitle(props.title);
 
   useEffect(() => {
     fetchItems();
@@ -12,7 +13,7 @@ function Catalogue() {
   const [items, setItems] = useState([]);
 
   const fetchItems = async () => {
-    const data = await fetch("https://dog.ceo/api/breeds/list");
+    const data = await fetch(apiPath);
 
     const items = await data.json();
     console.log("[Catalogue.js] fetchItems...", items);
@@ -21,8 +22,8 @@ function Catalogue() {
 
   return (
     <div>
-      <h2>Dogs</h2>
-      <CustAlphabetList data={items} />
+      {props.title ? <h2>{props.title}</h2> : ""}
+      <CustAlphabetList data={items} parentSlug={props.slug} />
     </div>
   );
 }

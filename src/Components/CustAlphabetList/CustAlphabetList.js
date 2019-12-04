@@ -14,7 +14,13 @@ const alphabetListCust = props => {
             <Link
               className="alphabet-list-tag"
               key={index}
-              to={`/dogs/${slugify(item)}`}
+              to={{
+                pathname: props.parentSlug + slugify(item),
+                state: {
+                  fromCatalogue: true,
+                  parentPage: props.parentSlug
+                }
+              }}
             >
               {item}
             </Link>

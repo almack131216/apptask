@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import ReactLoading from "react-loading";
 import axios from "axios";
-import { setDocumentTitle } from "../../Assets/Helpers";
+import { setDocumentTitle, apiGetItemDetails } from "../../Assets/Helpers";
 
 class ItemDetail extends Component {
   constructor(props) {
     super(props);
-    this.itemName = this.props.match.params.name;
-    setDocumentTitle(this.itemName);
+
     this.timeIncrementMs = 50;
     this.showSpinnerIfReturnGreaterThanMs = 200;
     this.state = {
@@ -21,22 +20,39 @@ class ItemDetail extends Component {
   }
 
   componentDidMount() {
-    let url = `https://dog.ceo/api/breed/${this.itemName}/images`;
-    console.log("API:" + url);
+    const { itemName } = this.props.match.params;
+    const { fromCatalogue, parentPage } = this.props.location.state;
 
-    this.incrementer = setInterval(
-      () =>
-        this.setState({
-          msElapsed: this.state.msElapsed + this.timeIncrementMs
-        }),
-      this.timeIncrementMs
+    this.itemName = itemName ? itemName : null;
+    this.parentPage = parentPage ? parentPage : null;
+    this.apiPath = apiGetItemDetails(this.itemName);
+    setDocumentTitle(this.itemName);
+
+    console.log(
+      "[ItemDetail] this.itemName: " +
+        this.itemName +
+        " / " +
+        fromCatalogue +
+        " / " +
+        parentPage
     );
+
+    this.incrementer =
+      this.state.isLoading &&
+      setInterval(
+        () =>
+          this.setState({
+            msElapsed: this.state.msElapsed + this.timeIncrementMs
+          }),
+        this.timeIncrementMs
+      );
     axios
-      .get(url)
+      .get(this.apiPath)
       .then(result => {
         this.setState({
           appData: result.data.message,
-          isLoading: false
+          isLoading: false,
+          msElapsed: 0
         });
       })
       .catch(error => {
@@ -68,13 +84,19 @@ class ItemDetail extends Component {
 
     const content = this.state.appData.slice(0, 6).map((imgSrc, index) => (
       <li key={index}>
-        <img src={imgSrc} alt={this.itemName + " " + index} width="100px" />
+        <img
+          src={imgSrc}
+          alt={this.itemName + " " + index}
+          width="100px"
+          height="100px"
+        />
       </li>
     ));
 
     return (
       <div>
-        <h2>{this.itemName}</h2>
+        {this.itemName ? <h2>{this.itemName}</h2> : ""}
+        {this.parentPage ? <a href={this.parentPage}>back</a> : ""}
         <ul>{content}</ul>
       </div>
     );

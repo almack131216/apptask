@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SiteData from "./Assets/api/data.json";
@@ -9,12 +8,13 @@ import SideDrawer from "./Components/Navigation/SideDrawer/SideDrawer";
 import GenericPage from "./Pages/GenericPage/GenericPage";
 import Catalogue from "./Pages/Catalogue/Catalogue";
 import ItemDetail from "./Pages/CatalogueItem/ItemDetail";
+import { setDocumentTitle } from "./Assets/Helpers";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    document.title = this.props.appTitle;
-    // console.log("[App.js] constructor");
+    setDocumentTitle(this.props.appTitle);
+    console.log("[App.js] constructor");
 
     this.state = {
       data: SiteData,
@@ -42,7 +42,7 @@ class App extends Component {
   };
 
   render() {
-    // console.log("[App.js] render... ");
+    console.log("[App.js] render... ");
 
     let backdrop;
 
@@ -56,7 +56,6 @@ class App extends Component {
 
     return (
       <Router>
-        {" "}
         <div className="App">
           <Toolbar
             brandName={this.state.data.brandName}
@@ -78,8 +77,10 @@ class App extends Component {
               <Route path={pageAbout.url}>
                 <GenericPage title={pageAbout.title} body={pageAbout.body} />
               </Route>
-              <Route exact path="/dogs" component={Catalogue} />
-              <Route path="/dogs/:name" component={ItemDetail} />
+              <Route exact path="/dogs">
+                <Catalogue title={pageCatalogue.title} slug="/dogs/" />
+              </Route>
+              <Route path="/dogs/:itemName" component={ItemDetail} />
             </Switch>
           </main>
         </div>
