@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import CustAlphabetList from "../../Components/CustAlphabetList/CustAlphabetList";
+import { setDocumentTitle } from "../../Assets/Helpers";
 
 function Catalogue() {
+  setDocumentTitle("Dogs");
+
   useEffect(() => {
     fetchItems();
   }, []);

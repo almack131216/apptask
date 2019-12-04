@@ -6,8 +6,7 @@ import SiteData from "./Assets/api/data.json";
 import Backdrop from "./Components/Navigation/Backdrop/Backdrop";
 import Toolbar from "./Components/Navigation/Toolbar/Toolbar";
 import SideDrawer from "./Components/Navigation/SideDrawer/SideDrawer";
-import Home from "./Pages/Home/Home";
-import About from "./Pages/About/About";
+import GenericPage from "./Pages/GenericPage/GenericPage";
 import Catalogue from "./Pages/Catalogue/Catalogue";
 import ItemDetail from "./Pages/CatalogueItem/ItemDetail";
 
@@ -51,6 +50,10 @@ class App extends Component {
       backdrop = <Backdrop click={this.backdropClickHandler} />;
     }
 
+    const pageHome = this.state.data.navigation[0];
+    const pageAbout = this.state.data.navigation[1];
+    const pageCatalogue = this.state.data.navigation[2];
+
     return (
       <Router>
         {" "}
@@ -69,15 +72,12 @@ class App extends Component {
           {backdrop}
           <main>
             <Switch>
-              <Route
-                exact
-                path={this.state.data.navigation[0].url}
-                component={Home}
-              />
-              <Route
-                path={this.state.data.navigation[1].url}
-                component={About}
-              />
+              <Route exact path={pageHome.url}>
+                <GenericPage title={pageHome.title} body={pageHome.body} />
+              </Route>
+              <Route path={pageAbout.url}>
+                <GenericPage title={pageAbout.title} body={pageAbout.body} />
+              </Route>
               <Route exact path="/dogs" component={Catalogue} />
               <Route path="/dogs/:name" component={ItemDetail} />
             </Switch>

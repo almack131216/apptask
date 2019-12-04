@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import ReactLoading from "react-loading";
 import axios from "axios";
+import { setDocumentTitle } from "../../Assets/Helpers";
 
 class ItemDetail extends Component {
   constructor(props) {
     super(props);
     this.itemName = this.props.match.params.name;
+    setDocumentTitle(this.itemName);
     this.timeIncrementMs = 50;
     this.showSpinnerIfReturnGreaterThanMs = 200;
     this.state = {

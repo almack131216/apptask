@@ -7,14 +7,16 @@
       "title": "Home",
       "url": "/",
       "navTop": true,
-      "navSide": true
+      "navSide": true,
+      "body": "<h3>Thank you for your patience!</h3>"
     },
     {
       "id": "about",
       "title": "About",
       "url": "/about",
       "navTop": true,
-      "navSide": true
+      "navSide": true,
+      "body": "<h3>This app is created using...</h3>"
     },
     {
       "id": "dogs",

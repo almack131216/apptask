@@ -11,6 +11,15 @@ main {
   max-width: $max-width;
   padding: 0 $offset-g1;
   margin: 0 auto;
+
+  .body {
+    box-sizing: border-box;
+    background-color: $color-bg-light;
+    padding: $offset-g1;
+    width: 100%;
+    border: 1px solid $color-border;
+    margin: 0 auto;
+  }
 }
 
 code {
