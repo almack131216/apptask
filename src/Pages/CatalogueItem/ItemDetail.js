@@ -82,22 +82,24 @@ class ItemDetail extends Component {
       return null;
     }
 
-    const content = this.state.appData.slice(0, 6).map((imgSrc, index) => (
-      <li key={index}>
+    const content = this.state.appData.slice(0, 4).map((imgSrc, index) => (
+      <div
+        className={"css-grid__item css-grid__item--" + (index + 1)}
+        key={index}
+      >
         <img
+          className="css-grid__img"
           src={imgSrc}
           alt={this.itemName + " " + index}
-          width="100px"
-          height="100px"
         />
-      </li>
+      </div>
     ));
 
     return (
       <div>
         {this.itemName ? <h2>{this.itemName}</h2> : ""}
-        {this.parentPage ? <a href={this.parentPage}>back</a> : ""}
-        <ul>{content}</ul>
+        {/* {this.parentPage ? <a href={this.parentPage}>back</a> : ""} */}
+        <div className="css-grid portfolio">{content}</div>
       </div>
     );
   }

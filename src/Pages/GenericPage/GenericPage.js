@@ -8,7 +8,7 @@ const genericPage = props => {
   return (
     <div>
       {props.title ? <h2>{props.title}</h2> : ""}
-      {props.body ? <div class="body">{parse(props.body)}</div> : ""}
+      {props.body ? <div className="body">{parse(props.body)}</div> : ""}
     </div>
   );
 };
