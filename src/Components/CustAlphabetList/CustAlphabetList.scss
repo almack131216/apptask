@@ -18,7 +18,7 @@
     > div:first-child {
       width: 100% !important;
       margin: 0 auto;
-      background: #f9f9f9;
+      background: $color-bg-light;
       padding: $offset-g1;
       padding-right: 50px !important; // leave gap for the [A]-[Z] buttons
       box-sizing: border-box;
@@ -39,6 +39,7 @@
 
     // [A]-[Z] buttons bar
     > div:nth-child(2) {
+      background: $color-bg-light;
       top: $offset-g1 !important;
       right: $offset-g2 !important; //avoid the scrollbar
       width: auto;
@@ -68,6 +69,7 @@
         width: auto !important;
         flex-direction: row;
         justify-content: center;
+        padding: $offset-1;
 
         > div {
           display: inline-block;

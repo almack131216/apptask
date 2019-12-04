@@ -19,7 +19,6 @@ class ItemDetail extends Component {
   }
 
   componentDidMount() {
-    // let url = "https://api.github.com/users/pkellner/repos";
     let url = `https://dog.ceo/api/breed/${this.itemName}/images`;
     console.log("API:" + url);
 
@@ -67,7 +66,7 @@ class ItemDetail extends Component {
 
     const content = this.state.appData.slice(0, 6).map((imgSrc, index) => (
       <li key={index}>
-        <img src={imgSrc} width="100px" />
+        <img src={imgSrc} alt={this.itemName + " " + index} width="100px" />
       </li>
     ));
 

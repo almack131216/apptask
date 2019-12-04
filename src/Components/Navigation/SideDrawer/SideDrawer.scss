@@ -10,7 +10,6 @@ $SideDrawerWidth: 260px;
   top: 0;
   left: 0;
   width: $SideDrawerWidth;
-  max-width: 400px;
   z-index: 101;
   transform: translateX(calc(0px - (#{$SideDrawerWidth} + 10px)));
   transition: transform 0.3s ease-out;
@@ -34,11 +33,9 @@ $SideDrawerWidth: 260px;
 
       a {
         text-decoration: none;
-        // font-size: 1.2rem;
         text-align: left;
         display: block;
         padding: $offset-1 $offset-g1;
-        // color: black;
         font-weight: bold;
       }
     }

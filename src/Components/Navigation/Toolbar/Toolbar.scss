@@ -11,6 +11,10 @@
     height: 100%;
     align-items: center;
     padding: 0;
+
+    .spacer {
+      flex: 1;
+    }
   }
 
   .toolbar__toggle-button {
@@ -39,10 +43,6 @@
   }
 }
 
-.spacer {
-  flex: 1;
-}
-
 .toolbar__navigation-items ul {
   list-style: none;
   margin: 0;
@@ -66,14 +66,9 @@
 }
 
 .toolbar:not(.side-drawer-open) {
-  background: rgba(51, 51, 51, 0.75); //333 @ 75%
-  background: rgba(255, 255, 255, 0.75); //white @ 75%
+  background: white;
   transition: all 0.2s ease-in;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
-
-  &:hover {
-    background: white;
-  }
 }
 
 @media (min-width: $bp-sm) {

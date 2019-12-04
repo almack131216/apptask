@@ -1,6 +1,7 @@
 /* DrawerToggleButton.scss */
 // REF: https://w3bits.com/animated-menu-icon-css/
 
+// [=]
 .toggle-button {
   display: flex;
   flex-direction: column;
@@ -53,6 +54,7 @@
   }
 }
 
+// [>]
 .toolbar:not(.side-drawer-open) {
   .toggle-button {
     &:hover {
@@ -78,8 +80,9 @@
   }
 }
 
+// [X]
 .toolbar.side-drawer-open {
-  .toggle-button:hover .nav-icon {
+  .toggle-button .nav-icon {
     &:before {
       transform: translateY(11px) rotate(135deg);
     }

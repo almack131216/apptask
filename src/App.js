@@ -6,7 +6,6 @@ import SiteData from "./Assets/api/data.json";
 import Backdrop from "./Components/Navigation/Backdrop/Backdrop";
 import Toolbar from "./Components/Navigation/Toolbar/Toolbar";
 import SideDrawer from "./Components/Navigation/SideDrawer/SideDrawer";
-import SideDrawerToggle from "./Components/Navigation/SideDrawer/DrawerToggleButton";
 import Home from "./Pages/Home/Home";
 import About from "./Pages/About/About";
 import Catalogue from "./Pages/Catalogue/Catalogue";
