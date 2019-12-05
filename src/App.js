@@ -10,6 +10,7 @@ import GenericPage from "./Pages/GenericPage/GenericPage";
 import Catalogue from "./Pages/Catalogue/Catalogue";
 import ItemDetail from "./Pages/CatalogueItem/ItemDetail";
 import { setDocumentTitle } from "./Assets/Helpers";
+import Form from "./Components/Form/Form";
 
 class App extends Component {
   constructor(props) {
@@ -98,6 +99,7 @@ class App extends Component {
                 <Catalogue title={pageCatalogue.title} slug="/dogs/" />
               </Route>
               <Route path="/dogs/:itemName" component={ItemDetail} />
+              <Route path="/form" component={Form} />
             </Switch>
           </main>
         </div>

@@ -1,0 +1,18 @@
+/* Form.scss */
+
+form > div {
+  &.active {
+    background: lightblue;
+  }
+
+  label {
+    font-weight: bold;
+    input {
+      border: 1px solid $color-border;
+      width: 60%;
+    }
+  }
+  span {
+    color: red;
+  }
+}
