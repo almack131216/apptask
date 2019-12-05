@@ -34,6 +34,10 @@
         @extend .aLozengeClass;
         display: inline-block;
         margin: 0 5px 5px 0;
+        &.small {
+          padding: 0 5px;
+          font-size: 0.8em;
+        }
       }
     }
 
@@ -81,7 +85,7 @@
 }
 
 // if WIDTH is too small, hide [A]-[Z] nav
-@media (max-width: $bp-tablet-1) {
+@media (max-width: $bp-xs-1) {
   .alpha-list-wrap {
     .alpha-list {
       > div:first-child {

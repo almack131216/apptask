@@ -12,7 +12,7 @@ const alphabetListCust = props => {
         generateFn={(item, index) => {
           return (
             <Link
-              className="alphabet-list-tag"
+              className="alphabet-list-tag small"
               key={index}
               to={{
                 pathname: props.parentSlug + slugify(item),
