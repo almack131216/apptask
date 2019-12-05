@@ -1,5 +1,7 @@
 import React from "react";
-import { Form, Field } from "react-final-form";
+import { Form, Field, FormSpy } from "react-final-form";
+import RenderCount from "../../Components/RenderCount/RenderCount";
+//REF: https://www.youtube.com/watch?v=WoSzy-4mviQ
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const showResults = async values => {
@@ -10,12 +12,29 @@ const required = value => (value ? undefined : "Required");
 
 const finalForm = () => (
   <div>
-    <Form onSubmit={showResults}>
+    <Form
+      onSubmit={showResults}
+      subscription={{
+        submitting: true
+      }}
+    >
       {({ handleSubmit, values, submitting }) => (
         <form onSubmit={handleSubmit}>
-          <Field name="firstName" placeholder="First name" validate={required}>
+          <RenderCount />
+          <Field
+            name="firstName"
+            placeholder="First name"
+            validate={required}
+            subscription={{
+              value: true,
+              active: true,
+              error: true,
+              touched: true
+            }}
+          >
             {({ input, meta, placeholder }) => (
               <div className={meta.active ? "active" : ""}>
+                <RenderCount />
                 <label>First Name</label>
                 <input {...input} placeholder={placeholder} />
                 {meta.error && meta.touched && <span>{meta.error}</span>}
@@ -23,9 +42,20 @@ const finalForm = () => (
             )}
           </Field>
 
-          <Field name="lastName" placeholder="Last name" validate={required}>
+          <Field
+            name="lastName"
+            placeholder="Last name"
+            validate={required}
+            subscription={{
+              value: true,
+              active: true,
+              error: true,
+              touched: true
+            }}
+          >
             {({ input, meta, placeholder }) => (
               <div className={meta.active ? "active" : ""}>
+                <RenderCount />
                 <label>Last Name</label>
                 <input {...input} placeholder={placeholder} />
                 {meta.error && meta.touched && <span>{meta.error}</span>}
@@ -33,9 +63,20 @@ const finalForm = () => (
             )}
           </Field>
 
-          <Field name="email" placeholder="Email" validate={required}>
+          <Field
+            name="email"
+            placeholder="Email"
+            validate={required}
+            subscription={{
+              value: true,
+              active: true,
+              error: true,
+              touched: true
+            }}
+          >
             {({ input, meta, placeholder }) => (
               <div className={meta.active ? "active" : ""}>
+                <RenderCount />
                 <label>Email</label>
                 <input {...input} placeholder={placeholder} />
                 {meta.error && meta.touched && <span>{meta.error}</span>}
@@ -46,7 +87,14 @@ const finalForm = () => (
           <button type="submit" disabled={submitting}>
             Submit
           </button>
-          <pre>{JSON.stringify(values, undefined, 2)}</pre>
+          <FormSpy subscription={{ values: true }}>
+            {({ values }) => (
+              <pre>
+                <RenderCount />
+                {JSON.stringify(values, undefined, 2)}
+              </pre>
+            )}
+          </FormSpy>
         </form>
       )}
     </Form>

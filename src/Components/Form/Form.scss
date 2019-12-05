@@ -1,6 +1,8 @@
 /* Form.scss */
 
 form > div {
+  position: relative;
+
   &.active {
     background: lightblue;
   }
