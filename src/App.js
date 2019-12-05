@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.scss";
+import parse from "html-react-parser";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SiteData from "./Assets/api/data.json";
 import Backdrop from "./Components/Navigation/Backdrop/Backdrop";
@@ -54,6 +55,22 @@ class App extends Component {
     const pageAbout = this.state.data.navigation[1];
     const pageCatalogue = this.state.data.navigation[2];
 
+    // const pagePlugins = Object.keys(this.state.data.plugins);
+    const pagePlugins = this.state.data.plugins;
+    const pagePluginsList = pagePlugins.map((plugin, index) => (
+      <li key={"plugin-" + index}>
+        <strong>{plugin.title}</strong>
+        <p>{plugin.body}</p>
+      </li>
+    ));
+    let pluginsText = (
+      <div>
+        {parse(pageAbout.body)}
+        <ul>{pagePluginsList}</ul>
+      </div>
+    );
+    console.log("pluginsText:", pluginsText);
+
     return (
       <Router>
         <div className="App">
@@ -75,7 +92,7 @@ class App extends Component {
                 <GenericPage title={pageHome.title} body={pageHome.body} />
               </Route>
               <Route path={pageAbout.url}>
-                <GenericPage title={pageAbout.title} body={pageAbout.body} />
+                <GenericPage title={pageAbout.title} bodyParsed={pluginsText} />
               </Route>
               <Route exact path="/dogs">
                 <Catalogue title={pageCatalogue.title} slug="/dogs/" />

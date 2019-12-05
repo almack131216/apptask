@@ -6,9 +6,9 @@
       "id": "home",
       "title": "Home",
       "url": "/",
-      "navTop": true,
+      "navTop": false,
       "navSide": true,
-      "body": "<h3>Thank you for your patience!</h3>"
+      "body": "<h3>U+ DogDemo</h3><p>This app uses three API calls</p><ol><li><strong>App</strong> (<a href=\"https://github.com/almack131216/apptask/blob/master/src/Assets/api/data.json\" target=\"_blank\">data.json</a>)<p>I put the navigation and other text in a .json file. This way, I can make text changes and add new nav items without editing .js files. For example, I can add a navigation item to this .json file and I do not need to touch the Toolbar and SideDrawer files.<br>This file is loaded at root level (App.js) and the class/functional based component props are populated there</li><li><strong>Dogs</strong> (<a href=\"https://dog.ceo/api/breeds/list\" target=\"_blank\">https://dog.ceo/api/breeds/list</a>)<p>This list is retrieved and sent through &lt;AlphabetList&gt; component using 'react-alphabet-list' package. I have customised this component heavily because the original CSS fails when we put it into responsive views.</p></li><li><strong>Dog</strong> (<a href=\"https://dog.ceo/api/breed/pug/images\" target=\"_blank\">https://dog.ceo/api/breed/pug/images</a>)<p>A simple array of image URLs. On this app, I am using the first 4 of these images, and putting them in a responsive CSS grid layout.</p></li></ol>"
     },
     {
       "id": "about",
@@ -16,7 +16,7 @@
       "url": "/about",
       "navTop": true,
       "navSide": true,
-      "body": "<h3>This app is created using...</h3>"
+      "body": "<h3>Plugins</h3>"
     },
     {
       "id": "dogs",
@@ -24,6 +24,32 @@
       "url": "/dogs",
       "navTop": true,
       "navSide": true
+    }
+  ],
+  "plugins": [
+    {
+      "title": "node-sass + sass-loader",
+      "body": "All CSS is generated via individual component-related SASS files, imported into App.scss."
+    },
+    {
+      "title": "axios",
+      "body": "Axios is used to handle the API on item details page (in this example, the page showing your chosen dog images)."
+    },
+    {
+      "title": "html-react-parser",
+      "body": "I am using a parser so that I can send HTML formatted text as props."
+    },
+    {
+      "title": "react-slugify",
+      "body": "Used to ensure dynamic generated URLs are sanitized."
+    },
+    {
+      "title": "react-loading",
+      "body": "Loading graphic using SVG for reduced filesize. See details (dog photos) page to see loader in action."
+    },
+    {
+      "title": "react-alphabet-list",
+      "body": "This is the A-Z list seen on 'Dogs' page. I have customised this component heavily because the original CSS fails when we put it into responsive views."
     }
   ]
 }
